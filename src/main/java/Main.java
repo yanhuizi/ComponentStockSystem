@@ -1,9 +1,16 @@
-import view.LoginFrame;
+import db.DBUtil;
 
-import javax.swing.SwingUtilities;
+import java.sql.Connection;
 
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));
+        Connection conn = DBUtil.getConnection();
+
+        if (conn != null) {
+            System.out.println("数据库连接成功！");
+            DBUtil.close(conn);
+        } else {
+            System.out.println("数据库连接失败！");
+        }
     }
 }

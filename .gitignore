@@ -35,5 +35,13 @@ build/
 ### VS Code ###
 .vscode/
 
+### Local secrets ###
+.env
+.env.*
+!.env.example
+local.properties
+*.local.properties
+src/main/resources/*local*.properties
+
 ### Mac OS ###
 .DS_Store

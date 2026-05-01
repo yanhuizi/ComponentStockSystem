@@ -1,11 +1,13 @@
 package util;
 
-public final class LocationCodeUtil {
-    private LocationCodeUtil() {
+public class LocationCodeUtil {
+
+    public static String generateCode(String type, String column, int layer, int grid, String side) {
+        String layerStr = String.format("%02d", layer);
+        return type + "-" + column + layerStr + "-" + grid + side;
     }
 
-    public static String generateCode(String area, int shelfNo, int layerNo, int positionNo) {
-        String normalizedArea = area == null || area.isBlank() ? "A" : area.trim().toUpperCase();
-        return String.format("%s-%02d-%02d-%02d", normalizedArea, shelfNo, layerNo, positionNo);
+    public static boolean isValidCode(String code) {
+        return code.matches("^T\\d+-[A-Z]\\d{2}-\\d+[FB]$");
     }
 }
